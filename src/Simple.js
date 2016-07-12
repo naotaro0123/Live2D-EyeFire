@@ -165,6 +165,8 @@ Simple.prototype.initLoop = function(canvas/*HTML5 canvasオブジェクト*/)
         this.myerror("Failed to create WebGL context.");
         return;
     }
+    // OpenGLのコンテキストをセット
+    Live2D.setGL(gl);
 
     // 描画エリアを白でクリア
     gl.clearColor( 0.0 , 0.0 , 0.0 , 0.0 );
@@ -271,8 +273,6 @@ Simple.prototype.draw = function(gl/*WebGLコンテキスト*/, that)
 
         // テクスチャの元画像の参照をクリア
         that.loadedImages = null;
-        // OpenGLのコンテキストをセット
-        that.live2DModel.setGL(gl);
 
         // 表示位置を指定するための行列を定義する
         var w = that.live2DModel.getCanvasWidth();
